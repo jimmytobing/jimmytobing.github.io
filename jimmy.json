@@ -21,6 +21,7 @@
             "sections": [
                 {
                     "items": [
+                        { "type": "image", "url": "https://pbs.twimg.com/profile_images/557061751150112768/eMwi4Xz2.jpeg" },
                         {
                             "type": "vertical",
                             "style": {
@@ -29,16 +30,10 @@
                                 "align": "center"
                             },
                             "components": [
-                                
-                                { "type": "image", "url": "https://pbs.twimg.com/profile_images/557061751150112768/eMwi4Xz2.jpeg" },
-                                { "type": "vertical",
-                                  "components": [
-                                    { "type": "label", "text": "Jimmy Tobing" },
-                                    { "type": "label", "text" "www.google.com" }
-                                  ]
-                                },
-                                
-                                
+                                                               
+                                { "type": "label", "text": "Jimmy Tobing" },
+                                { "type": "label", "text" "www.google.com" },
+                                                                
                                 {
                                     "type": "label",
                                     "text": "It's ALIVE!",
