@@ -21,7 +21,7 @@
             "sections": [
                 {
                     "items": [
-                        { "type": "image", "url": "https://pbs.twimg.com/profile_images/557061751150112768/eMwi4Xz2.jpeg" },
+
                         {
                             "type": "vertical",
                             "style": {
