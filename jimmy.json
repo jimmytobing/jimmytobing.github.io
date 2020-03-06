@@ -1,0 +1,12 @@
+{
+  "type": "horizontal",
+  "components": [
+    { "type": "image", "url": "https://pbs.twimg.com/profile_images/557061751150112768/eMwi4Xz2.jpeg" },
+    { "type": "vertical",
+      "components": [
+        { "type": "label", "text": "Ethan" },
+        { "type": "label", "text" "www.textethan.com" }
+      ]
+    }
+  ]
+}
