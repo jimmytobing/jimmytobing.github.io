@@ -16,8 +16,7 @@
         "menu": {
           "text": "...",
           "href": {
-            "url": "https://jasonette.github.io/Jasonpedia/demo.json",
-            "view": "web"
+            "url": "https://jasonette.github.io/Jasonpedia/demo.json"
           }
         }
       },
@@ -30,7 +29,8 @@
             "type": "vertical",
             "components": [{
               "type": "label",
-              "text": "Tutorial"
+              "text": "Tutorial by Jimmy",
+	      "class": "bold"
             }, {
               "type": "label",
               "text": "Simple demos to demonstrate how each module works. Also used for testing purposes."
