@@ -8,7 +8,15 @@
 							
 							{
 								"type": "label",
-								"text": "Sudah punya Corono ID namun Lupa?",
+								"text": "Sudah punya Corono ID, Silahkan Login",
+								"style": {
+									"align": "center",
+									"color": "#007aff"
+								}
+							},
+							{
+								"type": "label",
+								"text": "Lupa Corono ID?",
 								"style": {
 									"align": "center",
 									"color": "#007aff"
