@@ -1,0 +1,150 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Corono",      
+      "actions": {
+				
+				"$load": {
+						"type": "$set",
+						"options": {
+							"processString": "Sending data ...",
+							"user": {
+                "handphone": 	"{{$params.user.handphone}}",
+								"nama": 			"{{$params.user.nama}}",
+								"userId":			"{{$params.user.userId}}",
+								"username":		"{{$params.user.username}}",
+								"password": 	"{{$params.user.password}}"
+              }
+						},
+						"success": {
+								"trigger": "register"
+						}
+				
+				},
+
+				"alerting0": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting on load param",
+						"description": "{{JSON.stringify($params)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},				
+				
+				"register": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://v2-api.sheety.co/03c7fef1df2e70a73fa17a0edfffdfb1/doroong/users",
+            "method": "post",
+            "data": {
+              "user": {
+                "handphone": 	"{{$get.user.handphone}}",
+								"nama": 			"{{$get.user.nama}}",
+								"userId": 		"{{$get.user.userId}}",
+								"username": 	"{{$get.user.username}}",
+								"password": 	"{{$get.user.password}}"
+              }
+            },
+            "header": {
+              "content_type": "json"
+            }
+          },
+          "success": {
+            "trigger": "set_global"
+          },
+          "error": {
+            "type": "$util.alert",
+            "options": {
+              "title": "Gagal register",
+              "description": "Data anda sudah terdaftar. Silahkan login dengan Corono ID anda."
+            }
+          }
+        },
+				
+				"alertingJason": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after send",
+						"description": "{{JSON.stringify($jason, null, 2)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+				
+				"set_global": {
+						"type": "$global.set",
+						"options": {
+							"userId": "{{$jason.user.id}}",
+							"user": {
+                "handphone": 	"{{$jason.user.handphone}}",
+								"nama": 			"{{$jason.user.nama}}",
+								"userId": 		"{{$jason.user.id}}",
+								"username": 	"{{$jason.user.username}}",
+								"password": 	"{{$jason.user.password}}"
+              }
+						},
+						"success": {
+								"trigger": "pesan_sukses"
+						}
+				},
+				
+				"alertingGlobal": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after set global",
+						"description": "{{JSON.stringify($global)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+				
+				"pesan_sukses": {
+					"type": "$util.alert",
+					"options": {
+						"title": "Sukses",
+						"description": "Data berhasil di register dengan Corono ID {{JSON.stringify($global.user.userId)}}"
+					},
+					"success": {
+						"trigger": "navigate"
+					}
+				},
+				
+				"navigate": {
+					"type": "$href",
+					"options": {
+							"url": "http://192.168.29.1:8080/corono/welcomecorono.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				}
+				
+      }
+    },
+		
+		"body": {
+			"background": "http://192.168.29.1:8080/corono/image/bgnew2.png",
+			"sections": [{
+				"items": [
+					{"@": "http://192.168.29.1:8080/corono/registercorono_atas.json"},
+					
+					{
+						"type": "label",
+						"text": "Processing ...",
+						"style": {
+							"align": "center"
+						}
+					}
+					
+				]
+			}]
+		}
+		
+		
+  }
+}

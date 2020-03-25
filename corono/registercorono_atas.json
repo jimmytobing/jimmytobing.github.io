@@ -1,0 +1,35 @@
+{
+	"type": "vertical",
+	"style": {
+		"padding": "5%"
+	},
+	"components": [
+
+
+							{
+								"type": "space",
+								"style": {
+									"height": "5%"
+								}
+							},
+							{
+								"type": "label",
+								"text": "Corono ID",
+								"style": {
+									"align": "center",
+									"size": "44",
+									"color": "#000000"
+								}
+							},
+							{
+								"type": "label",
+								"text": "Sign in dengan Corono ID untuk mendapatkan layanan maksimal dari prosedur perlindungan COVID-19",
+								"style": {
+									"align": "center",
+
+									"color": "#000000"
+								}
+							}
+							
+	]
+}

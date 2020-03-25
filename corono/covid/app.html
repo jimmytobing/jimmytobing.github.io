@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<script language="javascript">
+			var add = function(a,b){
+				var strret= a + ' loves ' + b;
+				document.getElementById("el").innerHTML = strret;
+				
+				$agent.response(strret);
+				return strret;
+			}
+		</script>
+	<head>
+	<body>
+		<p id="el" onclick="add('jimmy','jesus')">[Click me]</p>
+	</body>
+</html>

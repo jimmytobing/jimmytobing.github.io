@@ -1,0 +1,109 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Corono",
+			"data": {"tmp": ""},
+			"actions": {			
+				"$load": {
+					"type": "$render"
+				}
+			},
+			"templates": {
+				"body": {
+					"background": "http://192.168.29.1:8080/corono/image/bgnew2.png",
+					"style": {
+						"border": "none"
+					},
+					"sections": [{				
+						"items": [
+							{"@": "http://192.168.29.1:8080/corono/registercorono_atas.json"},
+							{
+								"type": "horizontal",
+								"style": {"padding": "5"},
+								"components": [
+									{
+										"type": "label",
+										"text": "No Handphone",
+										"style": {
+											"width": "30%"
+										}
+									},{
+										"type": "textfield",
+										"name": "handphone",
+										"placeholder": "nomer hape"
+									}
+								]
+							},
+							
+							{
+								"type": "horizontal",
+								"style": {"padding": "5"},
+								"components": [
+									{
+										"type": "label",
+										"text": "Nama Lengkap",
+										"style": {
+											"width": "30%"
+										}
+									},{
+										"type": "textfield",
+										"name": "nama",
+										"placeholder": "Nama Lengkap anda"
+									}
+								]
+							},					
+							{
+								"type": "horizontal",
+								"style": {"padding": "5"},
+								"components": [
+									{
+										"type": "label",
+										"text": "Password",
+										"style": {
+											"width": "30%"
+										}
+									},
+									{
+										"type": "textfield",
+										"name": "password",
+										"placeholder": "password",
+										"style": {
+											"secure": "true"
+										}
+									}
+								]
+							},
+							{
+								"type": "label",
+								"text": "Lanjutkan >",
+								"style": {
+									"align": "center",
+									"color": "#007aff"
+								},
+								"href": {
+									"url": "http://192.168.29.1:8080/corono/registercorono_send.json",
+									"options": {
+										"user": {
+											"handphone": "{{$get.handphone}}",
+											"nama": "{{$get.nama}}",
+											"userId": "<New>",
+											"username": "{{$get.nama}}",
+											"password": "{{$get.password}}"
+										}
+									}
+								}
+							},
+							{"@": "http://192.168.29.1:8080/corono/registercorono_bawah.json"}
+							
+						]
+					}]
+				}
+
+			}
+			
+    }
+		
+		
+		
+  }
+}

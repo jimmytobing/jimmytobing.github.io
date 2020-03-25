@@ -1,0 +1,37 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Web Container Agent Demo",
+            "actions": {
+								"$load": {
+									"trigger": "rpc"
+								},
+								
+								"rpc": {
+                    "type": "$agent.request",
+                    "options": {
+                        "id": "$webcontainer",
+                        "method": "add",
+                        "params": ["vina", "jimmy"]
+                    },
+										"success": {
+											"type": "$util.alert",
+											"options": {
+												"title": "Kembali isinya",
+												"description": "{{$jason}}"
+											}
+										}
+                }
+            }
+        },
+        "body": {
+            "background": {
+                "type": "html",
+                "url": "http://192.168.29.1:8080/corono/covid/app.html",
+								"action": {
+									"trigger": "rpc"
+								}
+            }
+        }
+    }
+}

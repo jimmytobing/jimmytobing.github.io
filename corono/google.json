@@ -1,0 +1,66 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Web Container Native Transition",
+            "actions": {
+						
+                "$load": {
+                    "type": "$cache.set",
+                    "options": {
+                        "url": [{
+                            "{{#if $params && 'url' in $params}}": "{{$params.url}}"
+                        }, {
+                            "{{#else}}": "https://www.google.com"
+                        }]
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+								
+								"dua": {
+                    "type": "$cache.set",
+                    "options": {
+                        "url": "{{$jason.url}}"
+                    },
+                    "success": {
+                        "trigger": "tiga"
+                    }
+                },
+								
+								"tiga": {
+									"type": "$util.alert",
+									"options": {
+										"title": "Dari tiga",
+										"description": "{{$cache.url}}"
+									},
+									"success": {
+										"trigger": "navigate"
+									}
+								},
+								
+                "navigate": {
+									"type": "$href",
+									"options": {
+											"url": "http://192.168.29.1:8080/corono/google.json",
+											"options": {
+													"url": "{{$cache.url}}"
+											}
+									}								
+								}
+							
+            },
+            "templates": {
+                "body": {
+                    "background": {
+                        "type": "html",
+                        "url": "{{$cache.url}}",
+                        "action": {
+                            "trigger": "dua"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Corono",
+      "data": {"tmp": ""},
+      "actions": {
+			
+				"$load": {
+					"trigger": "set_global"
+				},
+				
+				"set_global": {
+						"type": "$global.set",
+						"options": {
+							"serveraddr": "http://192.168.29.1:8080/corono"
+						},
+						"success": {
+								"trigger": "cek_user"
+						}
+				},
+				
+				"cek_user": [
+					{
+						"{{#if $global && 'user' in $global}}": 
+							{								
+								"type": "$util.alert",
+								"options": {
+									"title": "alerting $global langsung",
+									"description": "{{JSON.stringify($global, null, 2)}}"
+								},
+								"success": {
+									"type": "$render"
+								}				
+							}
+					},{
+						"{{#else}}":
+							{
+								"trigger": "navigate"
+							}
+					}
+				],
+				
+				"navigate": {
+					"type": "$href",
+					"options": {
+							"url": "http://192.168.29.1:8080/corono/hellocorono.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				}
+
+      },
+      "templates": {
+        "body": {
+					"background": "http://192.168.29.1:8080/corono/image/bgnew.png",
+					"style": {
+						"border": "none"
+					},
+          "sections": [{
+						"items": [
+							{
+								"type": "vertical",
+								"style": {
+									"padding": "5%"
+								},
+								"components": [
+									{
+										"type": "space",
+										"style": {
+											"height": "15%"
+										}
+									},
+									{
+										"type": "label",
+										"text": "Corono",
+										"style": {
+											"align": "center",
+											"size": "44",
+											"color": "#000000"
+										}
+									},
+									{
+										"type": "label",
+										"text": "Selamat Datang {{$global.user.nama}}",
+										"style": {
+											"align": "center",
+											"size": "20",
+											"color": "#000000"
+										}
+									}
+									
+									
+								]
+							},							
+							{
+								"type": "label",
+								"text": "Lanjutkan >",
+								"style": {
+									"align": "center",
+									"size": "20",
+									"color": "#007aff"
+								},
+								"href": {
+									"url": "http://192.168.29.1:8080/corono/corono.json"
+								}
+							},
+							{
+								"type": "space",
+								"style": {
+									"height": "31%"
+								}
+							},						
+						
+							{
+								"type": "label",
+								"text": "< Keluar",
+								"style": {
+									"align": "center",
+									"color": "#007aff"
+								},
+								"href": {
+									"url": "http://192.168.29.1:8080/corono/registercorono.json"
+								}
+							}
+							
+									
+							
+						]
+					}]
+        }
+      }
+    }
+  }
+}

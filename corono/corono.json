@@ -1,0 +1,100 @@
+{
+	"$jason": {
+		"head": {
+			"title": "Corono",
+			"actions": {
+
+				"tangkap" : {				
+					"type": "$global.set",
+					"options": {
+						"skor": "{{$jason.url.split('skor=')[1]}}"
+					},
+					"success": {
+							"trigger": "updateSkor"
+					}
+				},
+				
+				"alertingGlobal": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after set global",
+						"description": "{{JSON.stringify($global,null,2)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+				
+				"updateSkor": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://v2-api.sheety.co/03c7fef1df2e70a73fa17a0edfffdfb1/doroong/users/{{$global.userId}}",
+            "method": "put",
+            "data": {
+              "user": {
+								"userId" : "{{$global.userId}}",
+                "skor": "{{$global.skor}}"
+              }
+            },
+            "header": {
+              "content_type": "json"
+            }
+          },
+          "success": {
+            "trigger": "pesan_sukses"
+          },
+          "error": {
+            "type": "$util.alert",
+            "options": {
+              "title": "Gagal Update Skor",
+              "description": "Jaringan Bermasalah"
+            }
+          }
+        },
+
+				"alerting": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after send",
+						"description": "{{JSON.stringify($jason)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+								
+				"pesan_sukses": {
+					"type": "$util.alert",
+					"options": {
+						"title": "Sukses",
+						"description": "Data skor berhasil di update untuk Corono {{$global.user.username}}"
+					},
+					"success": {
+						"trigger": "navigate"
+					}
+				},
+
+				"navigate": {
+					"type": "$href",
+					"options": {
+							"url": "http://192.168.29.1:8080/corono/welcomecorono.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				}
+					
+			}
+		},
+		"body": {
+			"background": {
+				"type": "html",
+				"url": "http://192.168.29.1:8080/corono/covid/screen_covid.html",
+				"action": {
+					"trigger": "tangkap"
+				}
+			}
+		}
+	}
+}

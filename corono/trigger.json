@@ -1,0 +1,91 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Web Container Native Transition",
+            "actions": {
+                "$load": {
+                    "type": "$cache.set",
+                    "options": {
+                        "url": [{
+                            "{{#if $params && 'url' in $params}}": "{{$params.url}}"
+                        }, {
+                            "{{#else}}": "https://www.google.com"
+                        }]
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+								
+								"satu": {									
+									"type": "$util.alert",
+									"options": {
+										"title": "Dari satu",
+										"description": "{{$jason.url}}"
+									},
+									"success": {
+										"type": "$return.success",
+										"options": {
+											"url": "{{$jason.url}}"
+										}
+									}									
+								},
+								
+								"dua": {
+									"trigger": "satu",
+									"success": {
+										"type": "$util.alert",
+										"options": {
+											"title": "Dari dua",
+											"description": "{{$jason.url}}"
+										},
+										"success": {
+											"type": "$return.success",
+											"options": {
+												"url": "{{$jason.url}}"
+											}
+										}
+									}
+								},
+								
+								"tiga": {
+									"trigger": "dua",
+									"success": {
+									
+										"type": "$util.alert",
+										"options": {
+											"title": "Dari dua",
+											"description": "{{$jason.url}}"
+										},
+										"success": {
+											"trigger": "navigate"
+										}
+										
+									}
+								},
+								
+                "navigate": {
+									"type": "$href",
+									"options": {
+											"url": "http://192.168.29.1:8080/corono/google.json",
+											"options": {
+													"url": "{{$jason.url}}"
+											}
+									}								
+								}
+							
+            },
+            "templates": {
+                "body": {
+                    "background": {
+                        "type": "html",
+                        "url": "{{$cache.url}}",
+                        "action": {
+                            "trigger": "tiga"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

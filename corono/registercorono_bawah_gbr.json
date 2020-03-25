@@ -1,0 +1,66 @@
+{
+	"type": "vertical",
+	"style": {
+		"padding": "0",
+		"spacing": "0"
+	},
+	"components": [
+							
+							{
+								"type": "label",
+								"text": "Sudah punya Corono ID namun Lupa?",
+								"style": {
+									"align": "center",
+									"color": "#007aff"
+								}
+							},
+							{
+								"type": "space",
+								"style": {
+									"height": "5%"
+								}
+							},
+							{
+								"type": "horizontal",
+								"style": {
+									"height": "10%"
+								},
+								"components": [
+									{
+											"type": "image",
+											"url": "{{$global.serveraddr}}/image/batuk.png"
+									},{
+											"type": "image",
+											"url": "{{$global.serveraddr}}/image/bersin.png"
+									},{
+											"type": "image",
+											"url": "{{$global.serveraddr}}/image/demam.png"
+									},{
+											"type": "image",
+											"url": "{{$global.serveraddr}}/image/pusing.png"
+									},{
+											"type": "image",
+											"url": "{{$global.serveraddr}}/image/sakittenggorokan.png"
+									}
+									
+								]
+							},
+							{
+								"type": "label",
+								"text": "Corono ID adalah akun yang dapat kamu pakai untuk seluruh layanan kesehatan COVID-19",
+								"style": {
+									"align": "center",
+									"color": "rgb(52,199,89)"
+								}\
+							},
+							{
+								"type": "label",
+								"text": "Tentang Corono ID and privacy.",
+								"style": {
+									"align": "center",
+									"color": "#007aff"
+								}
+							}
+							
+	]
+}

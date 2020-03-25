@@ -1,0 +1,39 @@
+{
+	"$jason": {
+		"head": {
+			"title": "Corono"
+		},
+		"body": {
+			"background": "http://192.168.29.1:8080/corono/image/background.jpg",
+			"style": {
+				"border": "none"
+			},
+			"sections": [{
+				"items":[
+					{
+						"type": "label",
+						"text": "Hallo",
+						"style": {
+							"align": "center",
+							"height": "80%",
+							"size": "44",
+							"color": "#000000"
+						}
+					},
+					{
+						"type": "label",
+						"text": "> Silahkan Geser",
+						"style": {
+							"align": "center",
+							"size": "20",
+							"color": "#007aff"
+						},
+						"href": {
+							"url": "http://192.168.29.1:8080/corono/registercorono.json"
+						}
+					}
+				]				
+			}]
+		}
+	}
+}
