@@ -27,7 +27,7 @@
         "body": {
             "background": {
                 "type": "html",
-                "url": "http://192.168.29.1:8080/corono/covid/app.html",
+                "url": "https://jimmytobing.github.io/corono/covid/app.html",
 								"action": {
 									"trigger": "rpc"
 								}

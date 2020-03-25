@@ -77,7 +77,7 @@
 				"navigate": {
 					"type": "$href",
 					"options": {
-							"url": "http://192.168.29.1:8080/corono/welcomecorono.json",
+							"url": "https://jimmytobing.github.io/corono/welcomecorono.json",
 							"options": {
 									"paramku": "{{$jason.paramku}}",
 									"urlku": "{{$jason.url}}"
@@ -90,7 +90,7 @@
 		"body": {
 			"background": {
 				"type": "html",
-				"url": "http://192.168.29.1:8080/corono/covid/screen_covid.html",
+				"url": "https://jimmytobing.github.io/corono/covid/screen_covid.html",
 				"action": {
 					"trigger": "tangkap"
 				}

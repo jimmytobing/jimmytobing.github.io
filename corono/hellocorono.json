@@ -4,7 +4,7 @@
 			"title": "Corono"
 		},
 		"body": {
-			"background": "http://192.168.29.1:8080/corono/image/background.jpg",
+			"background": "https://jimmytobing.github.io/corono/image/background.jpg",
 			"style": {
 				"border": "none"
 			},
@@ -29,7 +29,7 @@
 							"color": "#007aff"
 						},
 						"href": {
-							"url": "http://192.168.29.1:8080/corono/registercorono.json"
+							"url": "https://jimmytobing.github.io/corono/registercorono.json"
 						}
 					}
 				]				

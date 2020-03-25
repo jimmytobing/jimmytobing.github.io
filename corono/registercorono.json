@@ -10,13 +10,13 @@
 			},
 			"templates": {
 				"body": {
-					"background": "http://192.168.29.1:8080/corono/image/bgnew2.png",
+					"background": "https://jimmytobing.github.io/corono/image/bgnew2.png",
 					"style": {
 						"border": "none"
 					},
 					"sections": [{				
 						"items": [
-							{"@": "http://192.168.29.1:8080/corono/registercorono_atas.json"},
+							{"@": "https://jimmytobing.github.io/corono/registercorono_atas.json"},
 							{
 								"type": "horizontal",
 								"style": {"padding": "5"},
@@ -81,7 +81,7 @@
 									"color": "#007aff"
 								},
 								"href": {
-									"url": "http://192.168.29.1:8080/corono/registercorono_send.json",
+									"url": "https://jimmytobing.github.io/corono/registercorono_send.json",
 									"options": {
 										"user": {
 											"handphone": "{{$get.handphone}}",
@@ -93,7 +93,7 @@
 									}
 								}
 							},
-							{"@": "http://192.168.29.1:8080/corono/registercorono_bawah.json"}
+							{"@": "https://jimmytobing.github.io/corono/registercorono_bawah.json"}
 							
 						]
 					}]

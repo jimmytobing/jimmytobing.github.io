@@ -42,7 +42,7 @@
                 "navigate": {
 									"type": "$href",
 									"options": {
-											"url": "http://192.168.29.1:8080/corono/google.json",
+											"url": "https://jimmytobing.github.io/corono/google.json",
 											"options": {
 													"url": "{{$cache.url}}"
 											}

@@ -12,7 +12,7 @@
 				"set_global": {
 						"type": "$global.set",
 						"options": {
-							"serveraddr": "http://192.168.29.1:8080/corono"
+							"serveraddr": "https://jimmytobing.github.io/corono"
 						},
 						"success": {
 								"trigger": "cek_user"
@@ -43,7 +43,7 @@
 				"navigate": {
 					"type": "$href",
 					"options": {
-							"url": "http://192.168.29.1:8080/corono/hellocorono.json",
+							"url": "https://jimmytobing.github.io/corono/hellocorono.json",
 							"options": {
 									"paramku": "{{$jason.paramku}}",
 									"urlku": "{{$jason.url}}"
@@ -54,7 +54,7 @@
       },
       "templates": {
         "body": {
-					"background": "http://192.168.29.1:8080/corono/image/bgnew.png",
+					"background": "https://jimmytobing.github.io/corono/image/bgnew.png",
 					"style": {
 						"border": "none"
 					},
@@ -103,7 +103,7 @@
 									"color": "#007aff"
 								},
 								"href": {
-									"url": "http://192.168.29.1:8080/corono/corono.json"
+									"url": "https://jimmytobing.github.io/corono/corono.json"
 								}
 							},
 							{
@@ -121,7 +121,7 @@
 									"color": "#007aff"
 								},
 								"href": {
-									"url": "http://192.168.29.1:8080/corono/registercorono.json"
+									"url": "https://jimmytobing.github.io/corono/registercorono.json"
 								}
 							}
 							
