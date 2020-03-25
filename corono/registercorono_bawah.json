@@ -8,7 +8,7 @@
 							
 							{
 								"type": "label",
-								"text": "Sudah punya Corono ID, Silahkan Login",
+								"text": "Login dengan Corono ID",
 								"style": {
 									"align": "center",
 									"color": "#007aff"
