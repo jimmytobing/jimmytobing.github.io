@@ -15,7 +15,7 @@
 							"serveraddr": "https://jimmytobing.github.io/corono"
 						},
 						"success": {
-								"trigger": "navigate"
+								"trigger": "cek_user"
 						}
 				},
 				
@@ -23,14 +23,9 @@
 					{
 						"{{#if $global && 'user' in $global}}": 
 							{								
-								"type": "$util.alert",
-								"options": {
-									"title": "alerting $global langsung",
-									"description": "{{JSON.stringify($global, null, 2)}}"
-								},
-								"success": {
-									"type": "$render"
-								}				
+								
+								"type": "$render"
+												
 							}
 					},{
 						"{{#else}}":
