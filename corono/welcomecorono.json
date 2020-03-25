@@ -15,7 +15,7 @@
 							"serveraddr": "https://jimmytobing.github.io/corono"
 						},
 						"success": {
-								"trigger": "cek_user"
+								"trigger": "navigate"
 						}
 				},
 				
