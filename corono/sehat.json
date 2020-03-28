@@ -90,7 +90,7 @@
                 },
                 "components": [{
                   "type": "label",
-									"text": "JT",
+									"text": "JG",
                   "style": {
 										"size": "22",
 										"color": "rgb(200,0,0)",
@@ -109,7 +109,7 @@
                     "type": "horizontal",
                     "components": [{
                       "type": "label",
-                      "text": "ethan",
+                      "text": "jimmi gading",
                       "style": {
                         "font": "HelveticaNeue-Bold",
                         "width": "50",
