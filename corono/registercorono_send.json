@@ -128,7 +128,6 @@
     },
 		
 		"body": {
-			"background": "https://jimmytobing.github.io/corono/image/bgnew2.png",
 			"sections": [{
 				"items": [
 					{"@": "https://jimmytobing.github.io/corono/registercorono_atas.json"},

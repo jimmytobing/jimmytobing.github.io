@@ -6,7 +6,68 @@
       "actions": {
 			
 				"$load": {
-					"trigger": "set_global"
+					"trigger": "script_load"
+				},
+				
+				"script_load": {
+          "type": "$script.include",
+          "options": {
+            "items": [
+              {
+                "text": "var randomcolor = function() { return '#'+Math.floor(Math.random()*16777215).toString(16); }",
+								"text": "var jimdebug = function(obj) { alert(JSON.stringify(obj, null, 2)); return obj; }"
+              }
+            ]
+          },
+          "success": {
+            "trigger": "navigate_tmp"
+          }
+        },
+				
+				"$pull": {
+          "trigger": "draw"
+        },
+				
+				"draw": {
+          "type": "$render",
+          "options": {
+            "data": {
+              "color": "{{randomcolor()}}",
+              "background": "{{randomcolor()}}"
+            }
+          }
+        },
+				
+				"get_location": {
+					"type": "$geo.get",
+					"options": {
+						"distance": "1000"
+					},
+					"success": {
+						"type": "$href",
+						"options": {
+							"url": "http://maps.google.com/maps?q=&layer=c&cbll={{$jason.coord}}&cbp=11,0,0,0,0",
+							"view": "App"
+						}
+					}
+				},
+				
+				"get_addrbook" :{
+          "type": "$util.addressbook",
+          "success": {
+            "trigger": "alerting_get"
+          }
+				},
+				
+				"alerting_get": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting $get",
+						"description": "{{JSON.stringify($get, null, 2)}}"
+					},
+					"success": {
+						"type": "$render"
+					}				
 				},
 				
 				"set_global": {
@@ -22,10 +83,8 @@
 				"cek_user": [
 					{
 						"{{#if $global && 'user' in $global}}": 
-							{								
-								
-								"type": "$render"
-												
+							{
+								"type": "$render"											
 							}
 					},{
 						"{{#else}}":
@@ -34,6 +93,28 @@
 							}
 					}
 				],
+				
+				"alerting_global": {								
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting $global langsung",
+						"description": "{{JSON.stringify($global, null, 2)}}"
+					},
+					"success": {
+						"type": "$render"
+					}				
+				},
+				
+				"navigate_tmp": {
+					"type": "$href",
+					"options": {
+							"url": "https://jimmytobing.github.io/corono/sehat.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				},
 				
 				"navigate": {
 					"type": "$href",
@@ -49,7 +130,6 @@
       },
       "templates": {
         "body": {
-					"background": "https://jimmytobing.github.io/corono/image/bgnew.png",
 					"style": {
 						"border": "none"
 					},

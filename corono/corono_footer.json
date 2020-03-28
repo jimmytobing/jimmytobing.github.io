@@ -1,0 +1,25 @@
+{
+	"tabs": {
+	  "items": [{
+			"text" : "Home",
+			"image": "https://jimmytobing.github.io/corono/images/home.png",
+			"url": "https://jimmytobing.github.io/corono/corono.json"
+	  }, {
+			"text" : "Tips Sehat",
+			"image": "https://jimmytobing.github.io/corono/images/heart.png",
+			"url": "https://jimmytobing.github.io/corono/sehat.json"
+	  }, {
+			"text" : "Berita",
+			"image": "https://jimmytobing.github.io/corono/images/camera.png",
+			"url": "https://jimmytobing.github.io/corono/berita.json"
+	  }, {
+			"text" : "Screening",
+			"image": "https://jimmytobing.github.io/corono/images/search.png",
+			"url": "https://jimmytobing.github.io/corono/coronoscreening.json"
+	  }, {
+			"text" : "Profile",
+			"image": "https://jimmytobing.github.io/corono/images/profile.png",
+			"url": "https://jimmytobing.github.io/corono/profile.json"
+	  }]
+	}
+}

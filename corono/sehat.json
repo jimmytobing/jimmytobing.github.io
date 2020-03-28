@@ -1,0 +1,186 @@
+{
+	"$jason": {
+		"head": {
+			"title": "Corono",
+			"offline": "true",
+			"actions": {
+
+
+				
+				"alertingGlobal": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after set global",
+						"description": "{{JSON.stringify($global,null,2)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+				
+				"sendLocation": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://v2-api.sheety.co/03c7fef1df2e70a73fa17a0edfffdfb1/doroong/users/{{$global.userId}}",
+            "method": "put",
+            "data": {              
+								"userId" : "{{$global.userId}}",
+                "skor": "{{$global.location}}"              
+            },
+            "header": {
+              "content_type": "json"
+            }
+          },
+          "success": {
+            "trigger": "pesan_sukses"
+          },
+          "error": {
+            "type": "$util.alert",
+            "options": {
+              "title": "Gagal Update Skor",
+              "description": "Jaringan Bermasalah"
+            }
+          }
+        },
+
+				"alerting": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after send",
+						"description": "{{JSON.stringify($jason)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+								
+				"pesan_sukses": {
+					"type": "$util.alert",
+					"options": {
+						"title": "Sukses",
+						"description": "Data skor berhasil di update untuk Corono {{$global.user.username}}"
+					},
+					"success": {
+						"trigger": "navigate"
+					}
+				},
+
+				"navigate": {
+					"type": "$href",
+					"options": {
+							"url": "https://jimmytobing.github.io/corono/welcomecorono.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				}
+					
+			}
+		},
+		"body": {
+
+			"header": {"@": "https://jimmytobing.github.io/corono/corono_header.json"},
+			"sections": [{				
+				"items": [					
+							{
+                "type": "horizontal",
+                "style": {
+                  "spacing": "10"
+                },
+                "components": [{
+                  "type": "label",
+									"text": "JT",
+                  "style": {
+										"size": "22",
+										"color": "rgb(200,0,0)",
+										"padding": "11",
+										"background": "#ffff00",
+                    "width": "48",
+                    "height": "48",
+                    "corner_radius": "25"
+                  }
+                }, {
+                  "type": "vertical",
+                  "style": {
+                    "spacing": "5"
+                  },
+                  "components": [{
+                    "type": "horizontal",
+                    "components": [{
+                      "type": "label",
+                      "text": "ethan",
+                      "style": {
+                        "font": "HelveticaNeue-Bold",
+                        "width": "50",
+                        "size": "14"
+                      }
+                    }, {
+                      "type": "label",
+                      "text": "@gliechtenstein · 8h",
+                      "style": {
+                        "color": "#8899a6",
+                        "size": "13",
+                        "font": "HelveticaNeue"
+                      }
+                    }]
+                  }, {
+                    "type": "label",
+                    "text": "{{text}}",
+                    "style": {
+                      "font": "HelveticaNeue",
+                      "size": "14"
+                    }
+                  }, {
+                    "type": "image",
+                    "url": "https://jimmytobing.github.io/corono/images/pasienx.png",
+                    "style": {
+                      "corner_radius": "5"
+                    }
+                  }, {
+                    "type": "horizontal",
+                    "style": {
+                      "padding_top": "10"
+                    },
+                    "components": [{
+                      "type": "image",
+                      "style": {
+                        "height": "20"
+                      },
+                      "url": "https://jimmytobing.github.io/corono/images/notifications.png"
+                    }, {
+                      "type": "space",
+                      "style": {
+                        "width": "60"
+                      }
+                    }, {
+                      "type": "image",
+                      "style": {
+                        "height": "20"
+                      },
+                      "url": "https://jimmytobing.github.io/corono/images/messages.png"
+                    }, {
+                      "type": "space",
+                      "style": {
+                        "width": "60"
+                      }
+                    }, {
+                      "type": "image",
+                      "style": {
+                        "height": "20"
+                      },
+                      "url": "https://jimmytobing.github.io/corono/images/me.png"
+                    }, {
+                      "type": "space"
+                    }]
+                  }]
+                }]
+              }
+					
+					
+				]
+			}],
+			"footer": {"@": "https://jimmytobing.github.io/corono/corono_footer.json"}
+		}
+	}
+}

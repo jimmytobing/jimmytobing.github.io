@@ -1,0 +1,19 @@
+{
+	"title": {
+		"type": "image",
+		"url": "https://jimmytobing.github.io/corono/images/logo.png",
+		"style": {
+			"height": "22"
+		}
+	},
+	"menu": {
+	  "image": "https://jimmytobing.github.io/corono/images/box.png",
+	  "action": {
+		"type": "$util.toast",
+		"options": { "text": "berhasil image !"  }
+	  },
+	  "badge": {
+		"text": "3"
+	  }
+	}
+}

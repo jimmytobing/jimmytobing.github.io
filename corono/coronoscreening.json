@@ -5,7 +5,15 @@
 			"offline": "true",
 			"actions": {
 
-
+				"tangkap" : {				
+					"type": "$global.set",
+					"options": {
+						"skor": "{{$jason.url.split('skor=')[1]}}"
+					},
+					"success": {
+							"trigger": "updateSkor"
+					}
+				},
 				
 				"alertingGlobal": {
 					"type": "$util.alert",
@@ -18,14 +26,16 @@
 					}
 				},
 				
-				"sendLocation": {
+				"updateSkor": {
           "type": "$network.request",
           "options": {
             "url": "https://v2-api.sheety.co/03c7fef1df2e70a73fa17a0edfffdfb1/doroong/users/{{$global.userId}}",
             "method": "put",
-            "data": {              
+            "data": {
+              "user": {
 								"userId" : "{{$global.userId}}",
-                "skor": "{{$global.location}}"              
+                "skor": "{{$global.skor}}"
+              }
             },
             "header": {
               "content_type": "json"
@@ -79,38 +89,13 @@
 			}
 		},
 		"body": {
-			"style": {
-				"border": "none"
-			},
-			"header": {"@": "https://jimmytobing.github.io/corono/corono_header.json"},
-			"sections": [{				
-				"items": [					
-					{
-						"type": "space",
-						"style": {
-							"height": "10%"
-						}
-					},					
-					{
-						"type": "button",
-						"url": "https://jimmytobing.github.io/corono/images/panic.png",
-						"style": {
-							"align": "center",
-							"padding": "80"
-						},
-						"href": {
-							"url": "https://jimmytobing.github.io/corono/registercorono_send.json",
-              "transition": "modal",
-							"options": {
-								"locationSend": "{{$get.location}}"
-							}
-						}
-					}
-					
-					
-				]
-			}],
-			"footer": {"@": "https://jimmytobing.github.io/corono/corono_footer.json"}
+			"background": {
+				"type": "html",
+				"url": "https://jimmytobing.github.io/corono/covid/screen_covid.html",
+				"action": {
+					"trigger": "tangkap"
+				}
+			}
 		}
 	}
 }
