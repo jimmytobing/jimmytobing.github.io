@@ -1,0 +1,122 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Corono",      
+      "actions": {
+				
+				"$load": {
+					"trigger": "updateLocation"
+				},			
+				
+				"alertingGlobal": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting global",
+						"description": "{{JSON.stringify($global, null, 2)}}"
+					},
+					"success": {
+						"trigger": "updateLocation"
+					}
+				},
+				
+				"updateLocation": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://v2-api.sheety.co/03c7fef1df2e70a73fa17a0edfffdfb1/doroong/users/{{$global.userId}}",
+            "method": "put",
+            "data": {
+							"_rev": "{{$global._rev}}",
+              "user": {
+								"coord": 	"{{$params.coord}}"
+              }
+            },
+            "header": {
+              "content_type": "json"
+            }
+          },
+          "success": {
+            "trigger": "set_global"
+          },
+          "error": {
+            "type": "$util.alert",
+            "options": {
+              "title": "Gagal kirim bantuan",
+              "description": "Jaringan bermasalah. Tidak dapat mengambil lokasi anda. \nSilahkan coba kembali."
+            }
+          }
+        },
+				
+				"alertingJason": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after send",
+						"description": "{{JSON.stringify($jason, null, 2)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+				
+				"set_global": {
+						"type": "$global.set",
+						"options": {
+							"_rev": "{{$jason.rev}}",
+							"coord": 	"{{$params.coord}}"
+						},
+						"success": {
+								"trigger": "pesan_sukses"
+						}
+				},
+				
+							
+				"pesan_sukses": {
+					"type": "$util.alert",
+					"options": {
+						"title": "Sukses",
+						"description": "Berhasil Meminta bantuan ke lokasi Corono ID {{JSON.stringify($global.user.nama)}} \ndi {{$global.coord}}"
+					},
+					"success": {
+						"trigger": "navigate"
+					}
+				},
+				
+				"navigate": {
+					"type": "$href",
+					"options": {
+							"url": "https://jimmytobing.github.io/corono/corono.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				}
+				
+      }
+    },
+		
+		"body": {
+			"header": {"@": "https://jimmytobing.github.io/corono/corono_header.json"},
+			"sections": [{
+				"items": [
+					{
+						"type": "space",
+						"style": {
+							"height": "10%"
+						}
+					},
+					{
+						"type": "label",
+						"text": "Sending Location ...",
+						"style": {
+							"align": "center"
+						}
+					}
+					
+				]
+			}],
+			"footer": {"@": "https://jimmytobing.github.io/corono/corono_footer.json"}
+		}
+		
+		
+  }
+}

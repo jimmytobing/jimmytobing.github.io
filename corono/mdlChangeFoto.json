@@ -1,0 +1,282 @@
+{
+	"$jason": {
+		"head": {
+			"title": "Corono",
+			"offline": "true",
+			"actions": {
+			
+				"$load": {
+					"trigger": "script_load"
+				},
+				
+				"script_load": {
+          "type": "$script.include",
+          "options": {
+            "items": [
+              {
+                "text": "var randomcolor = function() { return '#'+Math.floor(Math.random()*16777215).toString(16); }",
+								"text": "var jimdebug = function(obj) { alert(JSON.stringify(obj, null, 2)); return obj; }"
+              }
+            ]
+          },
+          "success": {
+            "trigger": "cek_param"
+          }
+        },				
+				
+				"alertingParams": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting param alertingParams A",
+						"description": "{{JSON.stringify($params)}}"
+					},
+					"success": {
+						"trigger": "cek_param"
+					}
+				},
+				
+				"cek_param": [
+					{
+						"{{#if $params && 'gambar' in $params}}": 
+							{
+									"type": "$set",
+									"options": {
+										"judul": "{{$params.judul}}",
+										"gambar": "{{$params.gambar}}"
+									},
+									"success": {
+											"trigger": "alertingGet"
+									}
+							}
+					},{
+						"{{#else}}":
+							{
+								"trigger": "render"
+							}
+					}
+				],
+			
+				"alertingGet": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting GET",
+						"description": "{{JSON.stringify($get)}}"
+					},
+					"success": {
+						"trigger": "render"
+					}
+				},
+				
+				"clear_user": {
+					"type": "$global.reset",
+					"items": ["userId", "user"]
+				},
+				
+				"cek_user": [
+					{
+						"{{#if $global && 'user' in $global}}": 
+							{
+								"type": "$render"											
+							}
+					},{
+						"{{#else}}":
+							{
+								"trigger": "set_global"
+							}
+					}
+				],
+				
+				"set_global": {
+						"type": "$global.set",
+						"options": {
+							"userId": "2",
+							"user": {
+                "handphone": 	"087878706541",
+								"nama": 			"Jimmi Gading",
+								"userId": 		"2",
+								"username": 	"jimmi.gading",
+								"password": 	"jimmiaja"
+              }
+						},
+						"success": {
+								"trigger": "alertingGlobal"
+						}
+				},
+				
+				"alertingGlobal": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after set global",
+						"description": "{{JSON.stringify($global,null,2)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+				
+				"sendLocation": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://v2-api.sheety.co/03c7fef1df2e70a73fa17a0edfffdfb1/doroong/users/{{$global.userId}}",
+            "method": "put",
+            "data": {              
+								"userId" : "{{$global.userId}}",
+                "skor": "{{$global.location}}"              
+            },
+            "header": {
+              "content_type": "json"
+            }
+          },
+          "success": {
+            "trigger": "pesan_sukses"
+          },
+          "error": {
+            "type": "$util.alert",
+            "options": {
+              "title": "Gagal Update Skor",
+              "description": "Jaringan Bermasalah"
+            }
+          }
+        },
+
+				"alerting": {
+					"type": "$util.alert",
+					"options": {
+						"title": "alerting after send",
+						"description": "{{JSON.stringify($jason)}}"
+					},
+					"success": {
+						"trigger": ""
+					}
+				},
+								
+				"pesan_sukses": {
+					"type": "$util.alert",
+					"options": {
+						"title": "Sukses",
+						"description": "Data skor berhasil di update untuk Corono {{$global.user.username}}"
+					},
+					"success": {
+						"trigger": "navigate"
+					}
+				},
+				
+				"menuShow": {
+					"type": "$util.picker",
+					"options": {
+						"title ": "Ubah Photo",
+						"items": [{
+							"text": "Delete Photo",
+							"action": {
+								"type": "$util.banner",
+								"options": {
+									"title": "Success",
+									"description": "Delete Photo Berhasil"
+								}
+							}
+						},{
+							"text": "Take Photo",
+							"action": {
+								"type": "$media.camera",
+								"options": {
+									"edit": "true",
+									"type": "photo"
+								},
+								"success": {
+									"type": "$render"
+								}
+							}
+						},{
+							"text": "Choose Photo",
+							"action": {
+								"type": "$media.picker",
+								"options": {
+										"edit": "true",
+										"type": "photo"
+								},
+								"success":{
+									"type": "$set",
+									"options": {
+										"gambar": "{{$jason.data}}"
+									},
+									"success": {
+											"trigger": "alertingGet"
+									}
+								} 
+							}
+						}]
+					}
+				},
+				
+				"alertingJasonGbr": {
+					"type": "$util.alert",
+					"options": {
+							"title": "Selected {{$jason['content_type']}} at",
+							"description": "{{JSON.stringify($jason.data)}}"
+					},
+					"success": {
+						"type": "$render"
+					}
+				},
+				
+				"render": {
+					"type": "$render"
+				},
+				
+				"navigate": {
+					"type": "$href",
+					"options": {
+							"url": "https://jimmytobing.github.io/corono/welcomecorono.json",
+							"options": {
+									"paramku": "{{$jason.paramku}}",
+									"urlku": "{{$jason.url}}"
+							}
+					}								
+				}
+					
+			},
+			"templates": {
+				"body": {
+					"style": {
+						"border": "none"
+					},
+					
+					"header": {
+						"title": "{{$get.judul}}",
+						"menu": {
+							"text": "Menu",
+							"action": {
+								"trigger": "menuShow"
+							}
+						}
+					},
+					
+					"sections": [{				
+						"items": [
+									{
+										"type": "space",
+										"style": {
+											"height": "10%"
+										}
+									},
+									{
+										"type": "button",
+										"url": "{{$get.gambar}}",
+										"action": {
+											"trigger": "menuShow"
+										}
+									},
+									{
+										"type": "space",
+										"style": {
+											"height": "10%"
+										}
+									}
+						]
+					}]
+				}
+
+			}
+		}
+	}
+}

@@ -20,9 +20,13 @@
             ]
           },
           "success": {
-            "trigger": "navigate_tmp"
+            "trigger": "render"
           }
         },
+				
+				"render": {
+					"type": "$render"
+				},
 				
 				"$pull": {
           "trigger": "draw"

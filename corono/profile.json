@@ -1,0 +1,302 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Profile",
+      "data": {
+        "stats": [
+          {
+            "name": "posting",
+            "number": "568"
+          },
+          {
+            "name": "followers",
+            "number": "123"
+          },
+          {
+            "name": "following",
+            "number": "34"
+          },
+          {
+            "name": "menjual",
+            "number": "567"
+          }
+        ],
+        "posts": [
+          {
+            "avatar": "https://jimmytobing.github.io/corono/images/kecil.jpg",
+            "name": "Barton",
+            "location": "Somewhere",
+            "content": "https://jimmytobing.github.io/corono/images/barton.jpg"
+          },
+          {
+            "avatar": "https://jimmytobing.github.io/corono/images/kecil.jpg",
+            "name": "Audrey",
+            "location": "Somewhere",
+            "content": "https://jimmytobing.github.io/corono/images/audrey.jpg"
+          },
+          {
+            "avatar": "https://jimmytobing.github.io/corono/images/kecil.jpg",
+            "name": "Audrey",
+            "location": "Somewhere",
+            "content": "https://jimmytobing.github.io/corono/images/boss.jpg"
+          },
+          {
+            "avatar": "https://jimmytobing.github.io/corono/images/kecil.jpg",
+            "name": "Chet!",
+            "location": "Somewhere",
+            "content": "https://jimmytobing.github.io/corono/images/chet.jpg"
+          },
+          {
+            "avatar": "https://jimmytobing.github.io/corono/images/kecil.jpg",
+            "name": "Girl",
+            "location": "Somewhere",
+            "content": "https://jimmytobing.github.io/corono/images/girl.jpg"
+          }
+        ]
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "{{$global.user.nama}}",
+            "menu": {
+              "image": "https://jimmytobing.github.io/corono/images/settings.png"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center",
+                    "padding": "20",
+                    "spacing": "10",
+                    "background": "#fbfbfb"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "text": "Mari mengamankan Corono-ID mu",
+                      "style": {
+                        "font": "HelveticaNeue-Bold",
+                        "align": "center",
+                        "size": "12"
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "Konfirmasi {{$global.user.handphone}} sebagai \nnomer handphone-mu untuk mengamankan Corono-ID mu",
+                      "style": {
+                        "font": "HelveticaNeue",
+                        "align": "center",
+                        "size": "12",
+                        "color": "#959597"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Kirim Konfirmasi",
+                      "style": {
+                        "background": "#4592d8",
+                        "width": "250",
+                        "corner_radius": "3",
+                        "font": "HelveticaNeue-Bold",
+                        "size": "11",
+                        "color": "#ffffff"
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "Ubah Nomer Handphone",
+                      "style": {
+                        "color": "#4592d8",
+                        "font": "HelveticaNeue-Bold",
+                        "size": "11",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "items": [
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "padding": "15",
+                    "spacing": "20"
+                  },
+                  "components": [
+                    {
+                      "type": "vertical",
+                      "style": {
+                        "width": "80",
+                        "spacing": "10"
+                      },
+                      "components": [
+                        {
+                          "type": "button",
+                          "url": "https://jimmytobing.github.io/corono/images/kecil.jpg",
+                          "style": {
+                            "width": "80",
+                            "height": "80",
+                            "corner_radius": "40"
+                          },
+													"action": {
+														"type": "$href",
+														"options": {
+															"url": "https://jimmytobing.github.io/corono/mdlChangeFoto.json",
+															"options": {
+																"judul": "Profile {{$global.user.nama}}",
+																"gambar": "https://jimmytobing.github.io/corono/images/kecil.jpg"
+															}
+														}
+													}
+                        },
+                        {
+                          "type": "label",
+                          "text": "{{$global.user.nama}}",
+                          "style": {
+                            "align": "left",
+                            "font": "HelveticaNeue-Bold",
+                            "size": "12"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "vertical",
+                      "style": {
+                        "padding": "0",
+                        "spacing": "10"
+                      },
+                      "components": [
+                        {
+                          "type": "horizontal",
+                          "style": {
+                            "distribution": "equalsize",
+                            "padding": "0"
+                          },
+                          "components": { "{{#each stats}}": 
+														{
+                              "type": "vertical",
+                              "style": {
+                                "padding": "0",
+                                "spacing": "0",
+                                "align": "center"
+                              },
+                              "components": [
+                                {
+                                  "type": "label",
+                                  "text": "{{number}}",
+                                  "style": {
+                                    "font": "HelveticaNeue-Bold",
+                                    "align": "center",
+                                    "size": "16"
+                                  }
+                                },
+                                {
+                                  "type": "label",
+                                  "text": "{{name}}",
+                                  "style": {
+                                    "color": "#bdbdbd",
+                                    "align": "center",
+                                    "size": "10"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "button",
+                          "text": "Ubah Profile",
+                          "style": {
+                            "corner_radius": "3",
+                            "height": "30",
+                            "size": "11",
+                            "color": "#000000",
+                            "font": "HelveticaNeue-Bold",
+                            "background": "#e8e8ea"
+                          }
+                        },
+                        {
+                          "type": "space"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "items": { "{{#each posts}}": 
+								{
+                  "type": "vertical",
+                  "style": {
+                    "padding": "0"
+                  },
+                  "components": [
+                    {
+                      "type": "horizontal",
+                      "style": {
+                        "background": "#ffffff",
+                        "padding": "9",
+                        "spacing": "13"
+                      },
+                      "components": [
+                        {
+                          "type": "image",
+                          "url": "{{avatar}}",
+                          "style": {
+                            "width": "38",
+                            "height": "38",
+                            "corner_radius": "19"
+                          }
+                        },
+                        {
+                          "type": "vertical",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "{{name}}",
+                              "style": {
+                                "font": "HelveticaNeue-Bold",
+                                "size": "12"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{location}} >",
+                              "style": {
+                                "font": "HelveticaNeue",
+                                "size": "11"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "space"
+                        },
+                        {
+                          "type": "image",
+                          "url": "https://jimmytobing.github.io/corono/images/dotdotdot.png",
+                          "style": {
+                            "padding_top": "10",
+                            "width": "25"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "footer": {"@": "https://jimmytobing.github.io/corono/corono_footer.json"}
+        }
+      }
+    }
+  }
+}

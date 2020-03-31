@@ -76,16 +76,33 @@
 				
 				"set_global": {
 						"type": "$global.set",
-						"options": {
-							"userId": "{{$jason.user.id}}",
-							"user": {
-                "handphone": 	"{{$jason.user.handphone}}",
-								"nama": 			"{{$jason.user.nama}}",
-								"userId": 		"{{$jason.user.id}}",
-								"username": 	"{{$jason.user.username}}",
-								"password": 	"{{$jason.user.password}}"
-              }
-						},
+						"options": [
+							{
+								"{{#if $jason && 'id' in $jason}}": 
+									{
+										"userId": "{{$jason.id}}",
+										"user": {
+											"handphone": 	"{{$params.user.handphone}}",
+											"nama": 			"{{$params.user.nama}}",
+											"userId": 		"{{$jason.id}}",
+											"username": 	"{{$params.user.username}}",
+											"password": 	"{{$params.user.password}}"
+										}
+									}
+							},{
+								"{{#else}}":
+									{
+										"userId": "{{$jason.user.id}}",
+										"user": {
+											"handphone": 	"{{$jason.user.handphone}}",
+											"nama": 			"{{$jason.user.nama}}",
+											"userId": 		"{{$jason.user.id}}",
+											"username": 	"{{$jason.user.username}}",
+											"password": 	"{{$jason.user.password}}"
+										}
+									}
+							}
+						],
 						"success": {
 								"trigger": "pesan_sukses"
 						}

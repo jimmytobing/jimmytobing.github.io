@@ -4,8 +4,61 @@
 			"title": "Corono",
 			"offline": "true",
 			"actions": {
-
-
+			
+				"$load": {
+					"trigger": "script_load"
+				},
+				
+				"script_load": {
+          "type": "$script.include",
+          "options": {
+            "items": [
+              {
+                "text": "var randomcolor = function() { return '#'+Math.floor(Math.random()*16777215).toString(16); }",
+								"text": "var jimdebug = function(obj) { alert(JSON.stringify(obj, null, 2)); return obj; }"
+              }
+            ]
+          },
+          "success": {
+            "trigger": ""
+          }
+        },
+				
+				"clear_user": {
+					"type": "$global.reset",
+					"items": ["userId", "user"]
+				},
+				
+				"cek_user": [
+					{
+						"{{#if $global && 'user' in $global}}": 
+							{
+								"type": "$render"											
+							}
+					},{
+						"{{#else}}":
+							{
+								"trigger": "set_global"
+							}
+					}
+				],
+				
+				"set_global": {
+						"type": "$global.set",
+						"options": {
+							"userId": "2",
+							"user": {
+                "handphone": 	"087878706541",
+								"nama": 			"Jimmi Gading",
+								"userId": 		"2",
+								"username": 	"jimmi.gading",
+								"password": 	"jimmiaja"
+              }
+						},
+						"success": {
+								"trigger": "alertingGlobal"
+						}
+				},
 				
 				"alertingGlobal": {
 					"type": "$util.alert",
@@ -96,9 +149,9 @@
 										"color": "rgb(200,0,0)",
 										"padding": "11",
 										"background": "#ffff00",
-                    "width": "48",
-                    "height": "48",
-                    "corner_radius": "25"
+                    "width": "50",
+                    "height": "50",
+                    "corner_radius": "20"
                   }
                 }, {
                   "type": "vertical",

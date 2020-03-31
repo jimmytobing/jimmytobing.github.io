@@ -99,10 +99,10 @@
 							"padding": "80"
 						},
 						"href": {
-							"url": "https://jimmytobing.github.io/corono/registercorono_send.json",
+							"url": "https://jimmytobing.github.io/corono/coronolocation_send.json",
               "transition": "modal",
 							"options": {
-								"locationSend": "{{$get.location}}"
+								"coord": "12.342,22.343"
 							}
 						}
 					}
