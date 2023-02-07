@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
 	
     <link rel="apple-touch-icon" sizes="180x180" href="./store.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./store.png">
@@ -269,18 +270,18 @@
 				
 				return (
 					<div className="flex flex-wrap" onClick={handleClick}>
-						<KartuHitam nama="Net Profit" last="193 M" trend="-2,41%" nilai="198 M"/>
+						<KartuHitam nama="Net Profit" last="198 M" trend="-2,41%" nilai="192 M"/>
 						{ (showResults>=1) ? <KartuPutih nama="7. [ - ] Operational Expense" last="176 M" trend="0%" nilai="176 M"/> : null }
 						{ (showResults>=1) ? <KartuMerah nama="Gross Profit" last="373 M" trend="-1.28%" nilai="368 M"/> : null}
 						{ (showResults>=2) ? <KartuPutih  nama="6. [ x ] Gross Margin(%)" last="60%" trend="0%" nilai="60%"/> : null}
 						{ (showResults>=2) ? <KartuMerah nama="Sales/Revenue/Omzet" last="623 M" trend="-1.28%" nilai="616 M"/> : null}
 						{ (showResults>=3) ? <KartuPutih nama="5. [ x ] Repeat per Customer" last="2.1X perYear" trend="0%" nilai="2.1X perYear"/> : null}
 						{ (showResults>=3) ? <KartuPutih nama="4. [ x ] Revenue per Trans" last="95 Rb" trend="0%" nilai="95 Rb"/> : null }
-						{ (showResults>=3) ? <KartuMerah  nama="Active Customer" last="3,059 K" trend="-1.28%" nilai="3,020 K"/> : null}
-						{ (showResults>=4) ? <KartuMerah nama="3. [ - ] Lost Customer" last="269 K" trend="45%" nilai="391 K" switch="true"/> : null}
+						{ (showResults>=3) ? <KartuMerah  nama="Active Customer" last="3,059 Rb" trend="-1.28%" nilai="3,020 Rb"/> : null}
+						{ (showResults>=4) ? <KartuMerah nama="3. [ - ] Lost Customer" last="269 Rb" trend="45%" nilai="391 Rb" switch="true"/> : null}
 						{ (showResults>=4) ? <KartuMerah nama="New Customer" last="459 K" trend="-23.50%" nilai="351 K"/> : null }
-						{ (showResults>=5) ? <KartuMerah nama="2. [ x ] Conversion Rate(%)" nilai="39%" trend="-10.00%" last="44%"/> : null}
-						{ (showResults>=5) ? <KartuMerah  nama="1. [ x ] Lead Generation" nilai="897 K" trend="-15.00%" last="1,055 K"/>	: null}				
+						{ (showResults>=5) ? <KartuMerah nama="2. [ x ] Conversion Rate(%)" last="44%" trend="-10.00%" nilai="39%"  /> : null}
+						{ (showResults>=5) ? <KartuMerah  nama="1. [ x ] Lead Generation" last="1,055 Rb" trend="-15.00%" nilai="897 Rb"  />	: null}				
 					</div>
 				);
 			}
